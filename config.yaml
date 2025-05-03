@@ -1,0 +1,51 @@
+# config.yml
+
+# This is a sample configuration file for the Trello integration.
+
+# list_id is the ID of the list where the cards will be created, it can be found in the URL of the list in Trello (see user instructions)
+list_id: "67ffb5a4a6f2d16835173f91"
+
+# simple string templates for title & description
+title_template: "{Name} {Lastname}"
+
+# the description template can use any of the fields from the form/excel
+# and can be formatted as you like.
+# This is a mapping to generate the description of the card using the fields/columns from the form/excel.
+description_template: | 
+  E-mail: {E-Mail}
+  Cel: {Phone}
+  Edad: {Age}
+  Profesión: {Profession}
+  Feedback: {Feedback}
+
+
+# Conditional mappings: name to Trello member IDs
+# Is a member of the team responsible of this lead and should be added to the card?
+# This is a mapping to add a member to the card using a the values from the column in the template
+
+#eg: if the column value is the name of the member, then add its ID to the card (IDs are retrieved mannually from Trello, see user instructions)
+member_map:
+  Luciana: "6772d221e595581b43ffc57d"
+  Natalia:  "642d5f078ce9ad57f0366c2c"
+  Luciana/Natalia: ["6772d221e595581b43ffc57d", "642d5f078ce9ad57f0366c2c"]
+
+
+# Label logic: map the raw column value to one or more label IDs
+# colours are pre defined in Trello, so you can use them to filter cards
+# so this a mapping to add the pre existing labels to the card using the values from the column in the template
+
+#eg: if the column value is a certain string with a meaning, then add the ID of the label to the card (IDs are retrieved mannually from Trello, see user instructions)
+label_map:
+  Label_1: "67ffb5cadcb39d6def431926" # e.g: webinar tag
+  Label_2: ["67ffb5cadcb39d6def431926", "67c087c4d80c006d221d2d97"]  # e.g: webinar tag + present in webinar
+
+
+
+# checklist is one or more checklists to be added to the card
+checklists:
+  - name: "Asesorias"
+    items:
+      - "GB"
+      - "FT"
+      - "AT"
+
